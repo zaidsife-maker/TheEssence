@@ -1,0 +1,411 @@
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --accent-color: #2563eb;
+    /* Royal Blue */
+    --accent-hover: #1d4ed8;
+    --text-primary: #1e293b;
+    /* Slate 900 */
+    --text-secondary: #475569;
+    /* Slate 600 */
+    --card-bg: #ffffff;
+    --border-color: #e2e8f0;
+    /* Slate 200 */
+    --font-heading: 'Amiri', serif;
+    --font-body: 'Inter', sans-serif;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius: 8px;
+}
+
+body.dark-mode {
+    --primary-bg: #0f172a;
+    --secondary-bg: #1e293b;
+    --accent-color: #38bdf8;
+    --accent-hover: #0ea5e9;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --card-bg: #1e293b;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--secondary-bg);
+    color: var(--text-primary);
+    line-height: 1.7;
+    direction: rtl;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+    background-color: var(--secondary-bg);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Header */
+header {
+    background: var(--primary-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.religious-text-main {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.religious-text-sub {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    background: var(--primary-bg);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-size: 1rem;
+    border-radius: var(--radius);
+}
+
+.nav-btn:hover {
+    color: var(--accent-color);
+    background-color: var(--secondary-bg);
+}
+
+.nav-btn.active {
+    color: var(--accent-color);
+    background-color: #eff6ff;
+    /* Light blue bg */
+}
+
+/* Main Layout */
+main {
+    max-width: 900px;
+    /* Reduced width for reading focus */
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+/* Posts Grid */
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* Card Styling */
+.concept-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.concept-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-color);
+}
+
+.concept-icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.concept-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.concept-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.read-more-btn {
+    display: inline-block;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.95rem;
+    align-self: flex-start;
+}
+
+.read-more-btn:hover {
+    text-decoration: underline;
+    color: var(--accent-hover);
+}
+
+/* Post Detail */
+.post-container {
+    background: var(--card-bg);
+    padding: 3rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.back-btn:hover {
+    color: var(--accent-color);
+}
+
+.post-header {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.post-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.post-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.post-content {
+    font-size: 1.125rem;
+    /* 18px */
+    line-height: 1.8;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-right: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.5rem;
+}
+
+/* Info Box / Units Box */
+.info-box {
+    background-color: var(--secondary-bg);
+    /* changed from hardcoded #f1f5f9 */
+    border-right: 4px solid var(--accent-color);
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--text-primary);
+    /* Ensure text is visible */
+}
+
+.math-formula {
+    font-family: 'Fira Code', monospace;
+    background: var(--secondary-bg);
+    /* changed from #f8fafc */
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    color: var(--text-secondary);
+}
+
+.speed-control input {
+    width: 100%;
+    accent-color: var(--accent-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    main {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+
+    .post-container {
+        padding: 1.5rem;
+    }
+
+    .religious-text-main {
+        font-size: 1.5rem;
+    }
+
+    .post-header h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Auto Scroll Widget */
+.scroll-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--card-bg);
+    border: 2px solid var(--accent-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    /* Pill shape */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    z-index: 9999;
+    display: flex;
+    flex-direction: row;
+    /* Always horizontal */
+    gap: 1rem;
+    width: auto;
+    /* Auto width */
+    align-items: center;
+}
+
+.scroll-controls {
+    display: flex;
+    align-items: center;
+}
+
+.speed-control {
+    display: flex;
+    /* Always visible */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.main-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+}
+
+.main-btn:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+.small-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    background: var(--secondary-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.small-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+#speed-display {
+    font-weight: bold;
+    color: var(--accent-color);
+    font-family: var(--font-heading);
+    min-width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.widget-icon {
+    display: none;
+    /* No icon needed in expanded mode */
+}
